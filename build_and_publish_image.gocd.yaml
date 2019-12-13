@@ -26,7 +26,6 @@ pipelines:
             artifacts:
             - external:
                 id: bulletin-board
-                store_id: dockerhub
                 configuration:
                   options:
                     Image: ${DOCKERHUB_USERNAME}/bulletin-board
