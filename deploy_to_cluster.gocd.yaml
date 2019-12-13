@@ -6,6 +6,7 @@ pipelines:
     lock_behavior: none
     display_order: 3
     environment_variables:
+      NAMESPACE: "gocd"
     materials:
       upstream:
         pipeline: test_application
