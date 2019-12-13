@@ -6,14 +6,13 @@ pipelines:
     lock_behavior: unlockWhenFinished
     display_order: 1
     environment_variables:
+      DOCKER_REGISTRY: "jenkins-docker-repo.sgdctroy.net"
     materials:
       git:
         git: https://github.com/gocd-demo/node-bulletin-board.git
         shallow_clone: true
         auto_update: true
         branch: master
-    environment_variables:
-      DOCKER_REGISTRY: "jenkins-docker-repo.sgdctroy.net"
     stages:
     - build_and_publish_image:
         fetch_materials: true
