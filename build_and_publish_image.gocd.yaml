@@ -30,7 +30,7 @@ pipelines:
                 store_id: dockerhub
                 configuration:
                   options:
-                    Image: bulletin-board-test
+                    Image: jenkins-docker-repo.sgdctroy.net/bulletin-board-test
                     Tag: ${GO_PIPELINE_LABEL}
             tasks:
             - exec:
