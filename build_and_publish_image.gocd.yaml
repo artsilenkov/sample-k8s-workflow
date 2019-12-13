@@ -12,6 +12,8 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: master
+    environment_variables:
+      DOCKER_REGISTRY: "jenkins-docker-repo.sgdctroy.net"
     stages:
     - build_and_publish_image:
         fetch_materials: true
@@ -26,6 +28,7 @@ pipelines:
             artifacts:
             - external:
                 id: bulletin-board
+                store_id: dockerhub
                 configuration:
                   options:
                     Image: ${DOCKERHUB_USERNAME}/bulletin-board
