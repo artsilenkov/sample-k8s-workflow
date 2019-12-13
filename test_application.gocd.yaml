@@ -33,6 +33,6 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker run jenkins-docker-repo.sgdctroy.net/bulletin-board-test:$GO_PIPELINE_LABEL npm test
+                - docker run jenkins-docker-repo.sgdctroy.net/bulletin-board-test:$GO_DEPENDENCY_LABEL_UPSTREAM npm test
                 command: /bin/bash
                 run_if: passed
