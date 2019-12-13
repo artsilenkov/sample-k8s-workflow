@@ -1,4 +1,4 @@
-format_version: 3
+format_version: 9
 pipelines:
   build_and_publish_image:
     group: sample
@@ -35,6 +35,6 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker build -t ${DOCKERHUB_USERNAME}/bulletin-board:${GO_PIPELINE_LABEL} . -f Dockerfile.application
+                - docker build -t $DOCKERHUB_USERNAME/bulletin-board:$GO_PIPELINE_LABEL . -f Dockerfile.application
                 command: /bin/bash
                 run_if: passed
