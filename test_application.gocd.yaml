@@ -33,6 +33,6 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker run bulletin-board:latest npm test
+                - docker run jenkins-docker-repo.sgdctroy.net/bulletin-board:GO_PIPELINE_LABEL npm test
                 command: /bin/bash
                 run_if: passed

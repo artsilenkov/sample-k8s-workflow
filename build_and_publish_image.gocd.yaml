@@ -36,6 +36,6 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker build -t bulletin-board-test:latest . -f Dockerfile.application
+                - docker build -t jenkins-docker-repo.sgdctroy.net/bulletin-board-test:$GO_PIPELINE_LABEL . -f Dockerfile.application
                 command: /bin/bash
                 run_if: passed
