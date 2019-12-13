@@ -33,6 +33,6 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker run artsilenkov/bulletin-board:latest npm test
+                - docker run bulletin-board:latest npm test
                 command: /bin/bash
                 run_if: passed
