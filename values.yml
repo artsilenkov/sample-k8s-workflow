@@ -1,0 +1,21 @@
+agent:
+  persistence:
+    extraVolumes:
+      - name: kubectl
+        emptyDir: {}
+    extraVolumeMounts:
+      - name: kubectl
+        mountPath: /usr/local/bin/kubectl
+        subPath: kubectl
+  initContainers:
+    - name: download-kubectl
+      image: "ellerbrock/alpine-bash-curl-ssl:latest"
+      imagePullPolicy: "IfNotPresent"
+      volumeMounts:
+        - name: kubectl
+          mountPath: /download
+      workingDir: /download
+      command: ["/bin/bash"]
+      args:
+        - "-c"
+        - 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl'

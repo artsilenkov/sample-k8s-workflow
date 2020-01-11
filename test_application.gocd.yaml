@@ -8,8 +8,8 @@ pipelines:
     environment_variables:
     materials:
       upstream:
-        pipeline: build_and_publish_image
-        stage: build_and_publish_image
+        pipeline: build_and_publish_image_php
+        stage: build_and_publish_image_php
         name: upstream
     stages:
     - test_app_image:
@@ -24,15 +24,15 @@ pipelines:
             elastic_profile_id: demo-app
             tasks:
             - fetch:
-                artifact_id: bulletin-board
-                pipeline: build_and_publish_image
-                stage: build_and_publish_image
-                job: build_image
+                artifact_id: app-web-php
+                pipeline: build_and_publish_image_php
+                stage: build_and_publish_image_php
+                job: build_image_php
                 artifact_origin: external
                 run_if: passed
             - exec:
                 arguments:
                 - -c
-                - docker run jenkins-docker-repo.sgdctroy.net/bulletin-board-test:$GO_DEPENDENCY_LABEL_UPSTREAM npm test
+                - kubectl get namespaces
                 command: /bin/bash
                 run_if: passed
