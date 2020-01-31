@@ -1,21 +1,12 @@
-agent:
-  persistence:
-    extraVolumes:
-      - name: kubectl
-        emptyDir: {}
-    extraVolumeMounts:
-      - name: kubectl
-        mountPath: /usr/local/bin/kubectl
-        subPath: kubectl
-  initContainers:
-    - name: download-kubectl
-      image: "ellerbrock/alpine-bash-curl-ssl:latest"
-      imagePullPolicy: "IfNotPresent"
-      volumeMounts:
-        - name: kubectl
-          mountPath: /download
-      workingDir: /download
-      command: ["/bin/bash"]
-      args:
-        - "-c"
-        - 'curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl'
+env:
+  extraEnvVars:
+    - name: GOCD_PLUGIN_INSTALL_email-notifier
+      value: https://github.com/gocd-contrib/email-notifier/releases/download/v0.3-68-exp/email-notifier-0.3-68.jar
+    - name: GOCD_PLUGIN_INSTALL_gocd-slack-build-notifier
+      value: https://github.com/ashwanthkumar/gocd-slack-build-notifier/releases/download/v1.4.0/gocd-slack-notifier-1.4.0.jar
+    - name: GOCD_PLUGIN_INSTALL_gocd-oauth-login
+      value: https://github.com/gocd-contrib/gocd-oauth-login/releases/download/v2.4/github-oauth-login-2.4.jar
+    - name: GOCD_PLUGIN_INSTALL_gocd-build-github-pull-requests
+      value: https://github.com/ashwanthkumar/gocd-build-github-pull-requests/releases/download/v1.4.0-RC2/github-pr-poller-1.4.0-RC2.jar
+    - name: GOCD_PLUGIN_INSTALL_gocd-build-status-notifier
+      value: https://github.com/gocd-contrib/gocd-build-status-notifier/releases/download/1.6-89-exp/github-pr-status-1.6-89.jar
